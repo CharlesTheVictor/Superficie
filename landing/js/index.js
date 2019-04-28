@@ -162,7 +162,7 @@ window.onload = function(){
 // ctx.strokeStyle = '#555';
 
 // let mouse = {
-  
+
 //   down: false,
 //   x: 0,
 //   y: 0,
@@ -187,23 +187,23 @@ window.onload = function(){
 // /*////////////////////////////////////////*/
 
 // function loadTexture() {
-  
+
 //   console.log('loading texture', opts.image);
-  
+
 //   document.body.className = 'loading';
 
 //   let texture = new PIXI.Texture.fromImage(opts.image);
 //   if ( !texture.requiresUpdate ) { texture.update(); }
-  
+
 //   texture.on('error', function(){ console.error('AGH!'); });
 
 //   texture.on('update',function(){
 //   document.body.className = '';
-    
+
 //     console.log('texture loaded');
 
 //     if ( mesh ) { stage.removeChild(mesh); }
-    
+
 //     mesh = new PIXI.mesh.Plane( this, opts.pointsX, opts.pointsY);
 //     mesh.width = this.width;
 //     mesh.height = this.height;
@@ -322,7 +322,7 @@ window.onload = function(){
 //     this.pinX = pinx
 //     this.pinY = piny
 //   }
-  
+
 //   unpin(){
 //     this.pinX = null;
 //     this.pinY = null;
@@ -378,7 +378,7 @@ window.onload = function(){
 
 //     let startX = canvas.width / 2 - clothX * spacingX / 2;
 //     let startY = 1;
-		
+
 // 		let dims = {x:canvas.width,y:canvas.height}
 // 		function pinned(x,y,clothX,clothY){
 // 			//console.log(x+'/'+y+' of '+clothX+'/'+clothY)
@@ -391,22 +391,22 @@ window.onload = function(){
 
 //     for (let y = 0; y <= clothY; y++) {
 //       for (let x = 0; x <= clothX; x++) {
-				
+
 //         let point = new Point(
-//           startX + x * spacingX/* - (spacingX * Math.sin(y) )*/, 
+//           startX + x * spacingX/* - (spacingX * Math.sin(y) )*/,
 //           y * spacingY + startY /*+ ( y !== 0 ? 5 * Math.cos(x) : 0 )*/
 //         )
 //         !free && /* y === 0 */ pinned(x,y,clothX,clothY) && point.pin(point.x, point.y)
 //         x !== 0 && point.attach(this.points[this.points.length - 1])
 //         y !== 0 && point.attach(this.points[x + (y - 1) * (clothX + 1)])
-				
+
 //         this.points.push(point)
-      
+
 // 			}
-			
+
 //     }
 // 		//console.log(this.points);
-    
+
 //   }
 
 //   update (delta) {
@@ -422,16 +422,16 @@ window.onload = function(){
 
 //     this.points.forEach((point,i) => {
 //       point.update(delta * delta)
-        
+
 //       if ( opts.renderCloth ) { point.draw(); }
-      
+
 //       if ( mesh ) {
 //         i *= 2;
 //         mesh.vertices[i] = point.x;
 //         mesh.vertices[i+1] = point.y;
 //       }
 //     });
-    
+
 //     ctx.stroke()
 //   }
 // }
@@ -440,7 +440,7 @@ window.onload = function(){
 // 	var elRect = e.target.getBoundingClientRect();
 // 	var offX = elRect.left,
 // 			offY = elRect.top;
-	
+
 //   let pointer = e.touches ? e.touches[0] : e;
 //   mouse.px = mouse.x || pointer.clientX;
 //   mouse.py = mouse.y || pointer.clientY;
