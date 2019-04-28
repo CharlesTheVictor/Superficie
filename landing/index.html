@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Image Mesh</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Basic and interactive options for limited motion of image.">
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <div id="page-wrap" class="w50">
+	
+	<div id="canvas"></div>
+	<div class="curtain" data-vs-id="simple-plane-vs" data-fs-id="simple-plane-fs">
+	<img id="SUPER" src="surface1.png">
+	</div>
+</div>
+
+
+<script type = "text/javascript">
+
+//     var urls = [
+// 'https://i.ibb.co/tBG9nB7/surface1.png',
+// 'https://i.ibb.co/hcJYrNm/surface2.png',
+// 'https://i.ibb.co/Yjr7ZcL/surface3.png',
+// 'https://i.ibb.co/G2dJfzT/surface4.png',
+// ];
+
+// var n = 0;
+
+// setInterval(function() {
+
+//     document.getElementById('SUPER').src = urls[n];
+//     n++;
+//     if (n == 4) {
+//       n=0;
+//     }
+
+//     console.log(n);
+// }, 1000);
+
+
+      </script>
+
+
+<script id="simple-plane-vs" type="x-shader/x-vertex">
+	#ifdef GL_ES
+	precision mediump float;
+	#endif
+
+	// default mandatory variables
+	attribute vec3 aVertexPosition;
+	attribute vec2 aTextureCoord;
+
+	uniform mat4 uMVMatrix;
+	uniform mat4 uPMatrix;
+
+	// custom variables
+	varying vec3 vVertexPosition;
+	varying vec2 vTextureCoord;
+
+	uniform float uTime;
+	uniform vec2 uResolution;
+	uniform vec2 uMousePosition;
+	uniform float uMouseMoveStrength;
+
+
+	void main() {
+
+		vec3 vertexPosition = aVertexPosition;
+
+		// get the distance between our vertex and the mouse position
+		float distanceFromMouse = distance(uMousePosition, vec2(vertexPosition.x, vertexPosition.y));
+
+		// calculate our wave effect
+		float waveSinusoid = cos(5.0 * (distanceFromMouse - (uTime / 75.0)));
+
+		// attenuate the effect based on mouse distance
+		float distanceStrength = (0.4 / (distanceFromMouse + 0.4));
+
+		// calculate our distortion effect
+		float distortionEffect = distanceStrength * waveSinusoid * uMouseMoveStrength;
+
+		// apply it to our vertex position
+		vertexPosition.z +=  distortionEffect / 15.0;
+		vertexPosition.x +=  (distortionEffect / 15.0 * (uResolution.x / uResolution.y) * (uMousePosition.x - vertexPosition.x));
+		vertexPosition.y +=  distortionEffect / 15.0 * (uMousePosition.y - vertexPosition.y);
+
+		gl_Position = uPMatrix * uMVMatrix * vec4(vertexPosition, 1.0);
+
+		// varyings
+		vTextureCoord = aTextureCoord;
+		vVertexPosition = vertexPosition;
+	}
+</script>
+<script id="simple-plane-fs" type="x-shader/x-fragment">
+
+	#ifdef GL_ES
+	precision mediump float;
+	#endif
+
+	uniform float uTime;
+	uniform vec2 uResolution;
+	uniform vec2 uMousePosition;
+
+	varying vec3 vVertexPosition;
+	varying vec2 vTextureCoord;
+
+	uniform sampler2D simplePlaneTexture;
+
+
+	void main( void ) {
+
+						// get our texture coords
+						vec2 textureCoords = vec2(vTextureCoord.x, vTextureCoord.y);
+
+	// apply our texture
+	vec4 finalColor = texture2D(simplePlaneTexture, textureCoords);
+
+	// fake shadows based on vertex position along Z axis
+	finalColor.rgb -= clamp(-vVertexPosition.z, 0.0, 1.0);
+	// fake lights based on vertex position along Z axis
+	finalColor.rgb += clamp(vVertexPosition.z, 0.0, 1.0);
+
+	// handling premultiplied alpha (useful if we were using a png with transparency)
+	finalColor = vec4(finalColor.rgb * finalColor.a, finalColor.a);
+
+	gl_FragColor = finalColor;
+	}
+</script>
+  <script src='http://cdn.rawgit.com/martinlaxenaire/curtainsjs/master/build/curtains.min.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.2/pixi.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
