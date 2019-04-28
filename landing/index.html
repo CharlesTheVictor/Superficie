@@ -19,32 +19,32 @@
 
 	<div id="canvas"></div>
 	<div class="curtain" data-vs-id="simple-plane-vs" data-fs-id="simple-plane-fs">
-	<img id="SUPER" src="https://i.ibb.co/tBG9nB7/surface1.png">
+	<video src="js/VIDEOPLANE.mov" data-sampler="simplePlaneVideoTexture"></video>
 	</div>
 </div>
 
 
 <script type = "text/javascript">
 
-    var urls = [
-'https://i.ibb.co/tBG9nB7/surface1.png',
-'https://i.ibb.co/hcJYrNm/surface2.png',
-'https://i.ibb.co/Yjr7ZcL/surface3.png',
-'https://i.ibb.co/G2dJfzT/surface4.png',
-];
-
-var n = 0;
-
-setInterval(function() {
-
-    document.getElementById('SUPER').src = urls[n];
-    n++;
-    if (n == 4) {
-      n=0;
-    }
-
-    console.log(n);
-}, 1000);
+//     var urls = [
+// 'https://i.ibb.co/tBG9nB7/surface1.png',
+// 'https://i.ibb.co/hcJYrNm/surface2.png',
+// 'https://i.ibb.co/Yjr7ZcL/surface3.png',
+// 'https://i.ibb.co/G2dJfzT/surface4.png',
+// ];
+//
+// var n = 0;
+//
+// setInterval(function() {
+//
+//     document.getElementById('SUPER').src = urls[n];
+//     n++;
+//     if (n == 4) {
+//       n=0;
+//     }
+//
+//     console.log(n);
+// }, 1000);
 
 
       </script>
@@ -135,8 +135,8 @@ setInterval(function() {
 	gl_FragColor = finalColor;
 	}
 </script>
-  <script src='http://cdn.rawgit.com/martinlaxenaire/curtainsjs/master/build/curtains.min.js'></script>
-<script src='http://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.8.2/pixi.min.js'></script>
+  <script src='js/MXJAVA.js'></script>
+
 
 
 
