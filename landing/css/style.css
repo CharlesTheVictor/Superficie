@@ -18,8 +18,8 @@ html, body {
   height: 100%;
 }
 
-#SUPER {
-
+video {
+  display: none;
 }
 
 #page-wrap img, .pixi img {
