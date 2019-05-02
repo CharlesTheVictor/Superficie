@@ -8,14 +8,6 @@ $('document').ready(function(){
      $(".ARTIST").toggle("slow");
   }, );
 
-	var offset = 0, startX;
-	$('.page.__transitional').on('mousemove', function (e) {
-        if(startX) {
-           offset = e.pageX - startX;
-           elem.style['-webkit-transform'] = 'rotate3d(' + offset + 'deg)';
-        }
-    });
-
   $('.fakeZoom1').click(
      function() {
      $('.panel').addClass('scale');
