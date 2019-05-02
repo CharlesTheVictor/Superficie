@@ -7,5 +7,5 @@ $('document').ready(function(){
   $(".EXHIBITTEXT, .curtain").click(function() {
      $(".ARTIST").toggle("slow");
   }, );
-
+	
 });

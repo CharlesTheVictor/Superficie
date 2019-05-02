@@ -9,20 +9,20 @@ body {
   -webkit-perspective: 100vw;
           perspective: 100vw;
           background: transparent;
-  /*background: radial-gradient(circle,#ccff00 , #000000, #ff0000);
-background-size: 400% 400%;
-
-animation: AnimationName 60s ease infinite;*/
 }
-/*
-@keyframes AnimationName {
-    0%{background-position:0% 49%}
-    20%{background-position:20% 52%}
-    40%{background-position:60% 80%}
-    60%{background-position:40% 80%}
-    80%{background-position:30% 49%}
-    100%{background-position:0% 49%}
-} */
+
+.EXHIBITBOX {
+  position: absolute;
+  width: 75vh;
+  bottom: 0px;
+  right: 0px;
+  height: 75px;
+  z-index: 10;
+}
+
+.EXHIBITBOX:hover {
+  cursor: url(ARROW.png) 100 25, pointer;
+}
 
 img{
 
@@ -493,6 +493,25 @@ div[class^="fakeButtons fakeZoom"] {
   border-color: #049931;
   cursor: url(ARROW.png) 0 25, pointer;
 }
+
+div[class^="fakeButtons fakeZoom"]:hover {
+  background-image: url("Zoom.png");
+  background-size: cover;
+  transform: scale(1.5);
+}
+
+div[class^="fakeButtons fakeClose"]:hover {
+  background-image: url("Close.png");
+  background-size: cover;
+  transform: scale(1.5);
+}
+
+div[class^="fakeButtons fakeMinimize"]:hover {
+  background-image: url("Mini.png");
+  background-size: cover;
+  transform: scale(1.5);
+}
+
 
 .fakeMenu {
   box-sizing: border-box;
