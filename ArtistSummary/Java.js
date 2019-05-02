@@ -1,13 +1,5 @@
 $('document').ready(function(){
 
-	setTimeout(function(){
-		$(".loading").remove();
-	}, 6200);
-
-  $(".EXHIBITTEXT").click(function() {
-     $(".ARTIST").toggle("slow");
-  }, );
-
 	$('.fakeClose1').click(function() {
      $(".panel:last").hide('fast', function() {
     // Use arguments.callee so we don't need a named function
